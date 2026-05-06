@@ -42,62 +42,80 @@ export default function Profile() {
     alert("Profile saved!");
   }
 
-  return (
-    // Container for layout and styling
-    <div style={{ maxWidth: 500, margin: "20px auto" }}>
-      <h2>Create Profile</h2>
+    return (
+    <div className="profile-page">
+      <div className="profile-card">
+        <h2>Create Profile</h2>
+        <p className="profile-subtitle">
+          Add your campus info so other students can connect with you.
+        </p>
 
-      {/* Input for name */}
-      <input
-        name="name"
-        placeholder="Name"
-        value={profile.name}
-        onChange={handleChange}
-      /><br /><br />
+        <div className="form-group">
+          <label>Name</label>
+          <input
+            name="name"
+            placeholder="Name"
+            value={profile.name}
+            onChange={handleChange}
+          />
+        </div>
 
-      {/* Input for major */}
-      <input
-        name="major"
-        placeholder="Major"
-        value={profile.major}
-        onChange={handleChange}
-      /><br /><br />
+        <div className="form-group">
+          <label>Major</label>
+          <input
+            name="major"
+            placeholder="Major"
+            value={profile.major}
+            onChange={handleChange}
+          />
+        </div>
 
-      {/* Dropdown for selecting year */}
-      <select name="year" value={profile.year} onChange={handleChange}>
-        <option value="">Select Year</option>
-        <option>Freshman</option>
-        <option>Sophomore</option>
-        <option>Junior</option>
-        <option>Senior</option>
-      </select><br /><br />
+        <div className="form-group">
+          <label>Year</label>
+          <select name="year" value={profile.year} onChange={handleChange}>
+            <option value="">Select Year</option>
+            <option>Freshman</option>
+            <option>Sophomore</option>
+            <option>Junior</option>
+            <option>Senior</option>
+          </select>
+        </div>
 
-      {/* Input for classes (comma-separated list) */}
-      <input
-        name="classes"
-        placeholder="Classes (comma separated)"
-        value={profile.classes}
-        onChange={handleChange}
-      /><br /><br />
+        <div className="form-group">
+          <label>Classes</label>
+          <input
+            name="classes"
+            placeholder="Classes (comma separated)"
+            value={profile.classes}
+            onChange={handleChange}
+          />
+        </div>
 
-      {/* Input for interests (comma-separated list) */}
-      <input
-        name="interests"
-        placeholder="Interests (comma separated)"
-        value={profile.interests}
-        onChange={handleChange}
-      /><br /><br />
+        <div className="form-group">
+          <label>Interests</label>
+          <input
+            name="interests"
+            placeholder="Interests (comma separated)"
+            value={profile.interests}
+            onChange={handleChange}
+          />
+        </div>
 
-      {/* Text area for bio */}
-      <textarea
-        name="bio"
-        placeholder="Bio"
-        value={profile.bio}
-        onChange={handleChange}
-      /><br /><br />
+        <div className="form-group">
+          <label>Bio</label>
+          <textarea
+            name="bio"
+            placeholder="Bio"
+            value={profile.bio}
+            onChange={handleChange}
+          />
+        </div>
 
-      {/* Button to save profile */}
-      <button onClick={handleSave}>Save Profile</button>
+        <button className="full-button" onClick={handleSave}>
+          Save Profile
+        </button>
+      </div>
     </div>
   );
 }
+

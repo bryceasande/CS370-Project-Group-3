@@ -7,20 +7,15 @@ import Discover from "./pages/Discover";
 // Navigation bar component with links to different pages
 function NavBar() {
   return (
-    // Simple navigation bar styling
-    <nav style={{ padding: "16px", background: "#e9eef6", marginBottom: "20px" }}>
-      
-      {/* Link to Login page */}
-      <Link to="/" style={{ marginRight: "15px" }}>Login</Link>
+    <nav className="navbar">
+      <div className="nav-brand">Friend App</div>
 
-      {/* Link to Profile editing page */}
-      <Link to="/profile" style={{ marginRight: "15px" }}>Edit Profile</Link>
-
-      {/* Link to view saved profile */}
-      <Link to="/my-profile" style={{ marginRight: "15px" }}>My Profile</Link>
-
-      {/* Link to discover other students */}
-      <Link to="/discover">Discover</Link>
+      <div className="nav-links">
+        <Link to="/">Login</Link>
+        <Link to="/profile">Edit Profile</Link>
+        <Link to="/my-profile">My Profile</Link>
+        <Link to="/discover">Discover</Link>
+      </div>
     </nav>
   );
 }
