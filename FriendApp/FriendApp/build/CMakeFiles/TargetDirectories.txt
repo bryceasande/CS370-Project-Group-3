@@ -1,0 +1,6 @@
+/mnt/c/Users/kamme008/Downloads/FriendApp/FriendApp/build/CMakeFiles/FriendApp.dir
+/mnt/c/Users/kamme008/Downloads/FriendApp/FriendApp/build/CMakeFiles/edit_cache.dir
+/mnt/c/Users/kamme008/Downloads/FriendApp/FriendApp/build/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/kamme008/Downloads/FriendApp/FriendApp/build/test/CMakeFiles/FriendApp_test.dir
+/mnt/c/Users/kamme008/Downloads/FriendApp/FriendApp/build/test/CMakeFiles/edit_cache.dir
+/mnt/c/Users/kamme008/Downloads/FriendApp/FriendApp/build/test/CMakeFiles/rebuild_cache.dir

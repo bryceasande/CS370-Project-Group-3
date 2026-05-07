@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Friend Chat</title>
+<style>
+body {
+    font-family: Arial;
+    background: #f0f2f5;
+    text-align: center;
+}
+
+#chatBox {
+width: 400px;
+height: 400px;
+margin: auto;
+background: white;
+border-radius: 10px;
+overflow-y: scroll;
+padding: 10px;
+box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.message {
+padding: 8px;
+margin: 5px;
+border-radius: 8px;
+max-width: 70%;
+}
+
+.self {
+background: #4CAF50;
+color: white;
+margin-left: auto;
+}
+
+.other {
+background: #ddd;
+margin-right: auto;
+}
+
+.system {
+text-align: center;
+color: gray;
+font-size: 12px;
+} </style>
+
+</head>
+
+<body>
+
+<h2>Friend Chat</h2>
+<input id="email" placeholder="Campus Email"><br><br>
+<input id="username" placeholder="Username"><br><br> <input id="interest" placeholder="Interests (comma separated)"><br><br> <button onclick="connect()">Connect</button>
+
+<hr>
+
+<div id="chatBox"></div>
+
+<input id="message" placeholder="Type message">
+<button onclick="sendMessage()">Send</button>
+
+<script>
+let ws;
+
+function connect() {
+    let email = document.getElementById("email").value.trim();
+    let username = document.getElementById("username").value.trim();
+    let interests = document.getElementById("interest").value
+        .split(",")
+        .map(i => i.trim().toLowerCase())
+        .filter(i => i.length > 0);
+
+    ws = new WebSocket("ws://127.0.0.1:8848/chat");
+
+    ws.onopen = () => addMessage("Connected!", "system");
+
+    ws.onmessage = (msg) => {
+        if (msg.data.startsWith("Matched")) {
+            addMessage(msg.data, "system");
+        } else {
+            addMessage(msg.data, "other");
+        }
+    };
+
+    window.user = username;
+    window.email = email;
+    window.interests = interests;
+
+    ///queue matching
+ws.send(JSON.stringify({
+    username: username,
+    email: email,
+    interests: interests,
+    message: ""
+}));
+}
+
+function sendMessage() {
+    let msg = document.getElementById("message").value.trim();
+    if (!msg) return;
+
+    addMessage("Me: " + msg, "self");
+
+ws.send(JSON.stringify({
+    username: window.user,
+    email: document.getElementById("email").value,
+    interests: window.interests,
+    message: msg
+}));
+}
+
+function addMessage(text, type) {
+    let div = document.createElement("div");
+    div.classList.add("message", type);
+    div.innerText = text;
+
+    document.getElementById("chatBox").appendChild(div);
+}
+</script>
+
+</body>
+</html>
