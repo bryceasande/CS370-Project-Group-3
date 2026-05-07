@@ -168,3 +168,154 @@ button:hover {
   margin: 10px 0;
   line-height: 1.5;
 }
+.login-form-group {
+  margin-bottom: 14px;
+}
+
+.login-box input {
+  display: block;
+  width: 100%;
+}
+
+.logout-button {
+  background: white;
+  color: #1d4ed8;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background: #dbeafe;
+}
+
+.nav-user {
+  font-size: 13px;
+  background: rgba(255, 255, 255, 0.18);
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: white;
+}
+
+.shared-interests {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1e3a8a;
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+
+
+.completion-box {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1e3a8a;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.events-page {
+  max-width: 1000px;
+  margin: 24px auto;
+  padding: 0 24px;
+}
+
+.events-page h2 {
+  text-align: center;
+}
+
+.events-subtitle {
+  text-align: center;
+  color: #64748b;
+  margin-bottom: 24px;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.event-card {
+  background: white;
+  border: 1px solid #dbeafe;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.1);
+}
+
+.event-card h3 {
+  margin-top: 0;
+}
+
+.event-org {
+  color: #2563eb;
+  font-weight: 700;
+}
+
+.secondary-button {
+  background: #e0ecff;
+  color: #1d4ed8;
+}
+
+.secondary-button:hover {
+  background: #c7dcff;
+}
+
+.student-card {
+  background: white;
+  border: 1px solid #dbeafe;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.1);
+}
+
+.student-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #2563eb;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.student-card h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.student-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.student-badges span {
+  background: #eff6ff;
+  color: #1e3a8a;
+  border: 1px solid #bfdbfe;
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.student-card p {
+  line-height: 1.45;
+}
+
+.student-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}

@@ -23,6 +23,15 @@ export default function MyProfile() {
     );
   }
 
+  const completedFields = [
+    profile.name,
+    profile.major,
+    profile.year,
+    profile.classes,
+    profile.interests,
+    profile.bio,
+  ].filter(Boolean).length;
+
   return (
     <div className="profile-page">
       <div className="profile-card">
@@ -30,6 +39,10 @@ export default function MyProfile() {
         <p className="profile-subtitle">
           This is the information currently saved to your profile.
         </p>
+
+        <div className="completion-box">
+          <b>Profile Completion:</b> {completedFields}/6 fields completed
+        </div>
 
         <div className="profile-info">
           <p><b>Name:</b> {profile.name}</p>

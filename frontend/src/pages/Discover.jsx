@@ -13,6 +13,34 @@ export default function Discover() {
     }
   }
 
+  function getSharedInterests(student) {
+    const savedProfile = localStorage.getItem("profile");
+
+    if (!savedProfile) {
+      return [];
+    }
+
+    const profile = JSON.parse(savedProfile);
+
+    if (!profile.interests) {
+      return [];
+    }
+
+    const userInterests = profile.interests
+      .toLowerCase()
+      .split(",")
+      .map((interest) => interest.trim());
+
+    const studentInterests = student.interests
+      .toLowerCase()
+      .split(",")
+      .map((interest) => interest.trim());
+
+    return studentInterests.filter((interest) =>
+      userInterests.includes(interest)
+    );
+  }
+
   const majors = useMemo(() => {
     const uniqueMajors = [...new Set(students.map((student) => student.major))];
     return ["All", ...uniqueMajors];
@@ -31,7 +59,7 @@ export default function Discover() {
   });
 
   return (
-    <div style={{ maxWidth: "900px", margin: "20px auto", padding: "0 16px" }}>
+    <div style={{ maxWidth: "1000px", margin: "20px auto", padding: "0 16px" }}>
       <h2>Discover Students</h2>
 
       <div
@@ -106,29 +134,51 @@ export default function Discover() {
           <p>No students match your search or filters.</p>
         </div>
       ) : (
-        filteredStudents.map((student) => (
-          <div
-            key={student.id}
-            style={{
-              border: "1px solid #ccc",
-              borderRadius: "8px",
-              padding: "16px",
-              marginBottom: "16px",
-              backgroundColor: "#fff",
-            }}
-          >
-            <h3>{student.name}</h3>
-            <p><b>Major:</b> {student.major}</p>
-            <p><b>Year:</b> {student.year}</p>
-            <p><b>Classes:</b> {student.classes}</p>
-            <p><b>Interests:</b> {student.interests}</p>
-            <p><b>Bio:</b> {student.bio}</p>
+        <div className="student-grid">
+          {filteredStudents.map((student) => {
+            const sharedInterests = getSharedInterests(student);
 
-            <button onClick={() => handleAddFriend(student.id)}>
-              {sentRequests.includes(student.id) ? "Request Sent" : "Add Friend"}
-            </button>
-          </div>
-        ))
+            return (
+              <div className="student-card" key={student.id}>
+                <div className="student-avatar">
+                  {student.name
+                    .split(" ")
+                    .map((word) => word[0])
+                    .join("")}
+                </div>
+
+                <h3>{student.name}</h3>
+
+                <div className="student-badges">
+                  <span>{student.major}</span>
+                  <span>{student.year}</span>
+                </div>
+
+                <p>
+                  <b>Classes:</b> {student.classes}
+                </p>
+                <p>
+                  <b>Interests:</b> {student.interests}
+                </p>
+                <p>
+                  <b>Bio:</b> {student.bio}
+                </p>
+
+                {sharedInterests.length > 0 && (
+                  <p className="shared-interests">
+                    <b>Shared Interests:</b> {sharedInterests.join(", ")}
+                  </p>
+                )}
+
+                <button onClick={() => handleAddFriend(student.id)}>
+                  {sentRequests.includes(student.id)
+                    ? "Request Sent"
+                    : "Add Friend"}
+                </button>
+              </div>
+            );
+          })}
+        </div>
       )}
     </div>
   );
