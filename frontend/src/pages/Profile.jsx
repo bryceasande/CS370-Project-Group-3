@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 
-// This component allows the user to create and edit their profile
+
 export default function Profile() {
-  // State to store all profile fields
+  
   const [profile, setProfile] = useState({
     name: "",
     major: "",
@@ -12,33 +12,33 @@ export default function Profile() {
     bio: "",
   });
 
-  // Load saved profile data when the component first renders
+  
   useEffect(() => {
     const saved = localStorage.getItem("profile");
 
-    // If data exists in localStorage, parse it and update state
+    
     if (saved) {
       setProfile(JSON.parse(saved));
     }
   }, []);
 
-  // Handle changes for all input fields
+  
   function handleChange(e) {
     const { name, value } = e.target;
 
-    // Update only the field that changed while keeping the rest the same
+    
     setProfile((prev) => ({
       ...prev,
       [name]: value,
     }));
   }
 
-  // Save profile data to localStorage
+  
   function handleSave() {
-    // Convert the profile object into a string before saving
+    
     localStorage.setItem("profile", JSON.stringify(profile));
 
-    // Notify the user that their profile has been saved
+    
     alert("Profile saved!");
   }
 
