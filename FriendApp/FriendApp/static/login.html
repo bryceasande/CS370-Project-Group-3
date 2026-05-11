@@ -1,0 +1,27 @@
+<div id="login-form">
+    <input type="text" id="user" placeholder="Username">
+    <input type="password" id="pass" placeholder="Password">
+    <button onclick="login()">Login</button>
+</div>
+
+<script>
+    const socket = new WebSocket("ws://localhost:8080/chat");
+
+    function login() {
+        const data = {
+            type: "login", // Tell the server this is a login attempt
+            username: document.getElementById("user").value,
+            password: document.getElementById("pass").value
+        };
+        socket.send(JSON.stringify(data));
+    }
+
+    socket.onmessage = (event) => {
+        if (event.data === "LOGIN_SUCCESS") {
+            alert("Welcome!");
+            // Redirect to chat screen
+        } else {
+            alert("Invalid credentials or wrong campus email.");
+        }
+    };
+</script>
