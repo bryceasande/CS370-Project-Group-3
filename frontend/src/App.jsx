@@ -49,22 +49,22 @@ export default function App() {
     
     <BrowserRouter>
       
-      {}
+     
       <NavBar />
 
-      {}
+      
       <Routes>
         
-        {}
+        
         <Route path="/" element={<Login />} />
 
-        {}
+        
         <Route path="/profile" element={<Profile />} />
 
-        {/* Route for viewing saved profile */}
+        
         <Route path="/my-profile" element={<MyProfile />} />
 
-        {/* Route for discovering other students */}
+        
         <Route path="/discover" element={<Discover />} />
         <Route path="/events" element={<Events />} />
       </Routes>
